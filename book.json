@@ -1,0 +1,8 @@
+{
+    "plugins": [
+        "katex", 
+        "plantuml-server", 
+        "graph", 
+        "viz"
+    ]
+}
