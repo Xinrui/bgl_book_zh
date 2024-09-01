@@ -37,7 +37,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18.20.4'
-      - name: Build and Publish Honkit
-          # You may pin to the exact commit or the version.
-          # uses: Fudgedotdotdot/honkit-build-publish-action@0bb10821c53c174ebc106c485c748143446fbfc2
-        uses: Fudgedotdotdot/honkit-build-publish-action@0.0.3
+      - name: Install Honkit
+        run: npm install honkit --save-dev
+      - name: Build Honkit book
+        run: npx honkit build
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3.2.0-node20
+        with: 
+          # Artifact name
+          name: book
+          # A file, directory or wildcard pattern that describes what to upload
+          path: ./_book
+      - name: Deploy GitHub Pages site
+        uses: actions/deploy-pages@v4.0.5
+        with:
+          artifact_name: book
