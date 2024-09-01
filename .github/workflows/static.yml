@@ -38,7 +38,7 @@ jobs:
         with:
           node-version: '18.20.4'
       - name: Install Honkit
-        run: npm install -g honkit
+        run: npm install honkit --save-dev
       - name: Build Honkit book
         run: npx honkit build
       - name: Deploy to GitHub Pages
